@@ -52,17 +52,17 @@ This script applies a 2 IQR-based filter (25th percentile - 2 IQR) to data_table
 
 Prereqs: output from step 4.
 
-usage: perl filter.pl data_table.txt > FilteredOutput.txt
+usage: perl filter.pl data_table.txt > CoverageFiltered.txt
+
+6. summary.sh
+
+Prints some useful statistics about gene presence / absence in strains, based on step 5 output.
+Prereqs: Step 5 output.
+
+usage: sh summary.sh
 
 
-
- 
-
-
-
-
-
-3. contiguator.sh
+7. contiguator.sh
 
 This step runs Contiguator on the assembled scaffolds for each strain, aligning them to the WGLW5-fix scaffold.
 A 5kb minimum length cutoff is imposed. 
@@ -73,10 +73,10 @@ Prerequisite: Contiguator installed & added to path (see shell script)
 Inputs: the scaffolds for each strain.
 Outputs: Contiguator PDFs and alignment descriptions.
 
-4. feature-beds.sh
+8. feature-beds.sh
 
 This script creates bed files of each strain's features and contig boundaries relative to the reference genome.
-It uses blat, prokka outputs, and contiguator outputs.
+It uses blat, prokka outputs, and contiguator outputs. It is useful for visualization (e.g. in IGV).
 
 Usage: sh feature-beds.sh
 
