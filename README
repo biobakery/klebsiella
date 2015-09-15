@@ -2,6 +2,23 @@ README
 
 1.  make_bam.sh
 
-This step makes bam files from raw reads.
+This step creates an index from WGLW5-fix.fa (reference), aligns each strain's reads into a sam file, sorts the sam,
+and creates a bam for each strain.
 
+Prerequisite: bowtie2, samtools, fastqs for each strain.
 Usage: sh make_bam.sh
+Inputs: all the fastqs for each strain, gzipped, in the directory "data".
+Outputs: a *-sorted.bam and *-sorted.bai for each strain *.
+
+Note: the fastq.gz are not included and need to be downloaded from **URL**.
+
+2. bed.sh
+
+This step calculates coverage gaps for each strain and creates a bed file for each strain, showing the coverage gaps.
+
+Usage: sh bed.sh
+
+Prerequisite: bedtools
+Inputs: the *-sorted.bam files for each strain produced in step 1.
+Outputs: *-gaps.bed for each strain.
+
