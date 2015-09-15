@@ -22,6 +22,36 @@ Prerequisite: bedtools
 Inputs: the *-sorted.bam files for each strain produced in step 1.
 Outputs: *-gaps.bed for each strain.
 
+3. make_protein_bam.sh
+
+This step calculates the coverage of each strain's reads over each strain's proteins (as predicted by Prokka).
+
+Usage: sh make_protein_bam.sh
+
+Prerequisite: bowtie2, samtools, the prokka outputs and fastq reads (must be downloaded from **URL** and placed in directory data/PROKKA) 
+
+Inputs: prokka output ffn files, fastq files.
+Outputs: .bam files of reads to genes, pairwise for each strain.
+
+4. parse-protein-bams.sh
+
+This step combines bedtools and two accessory perl scripts (parse-coverage.pl and collate-coverage.pl) to calculate the per-base coverage at each position 
+for each protein, and then calculate the median & standard deviation coverage for each gene (parse-coverage.pl) and process each .cov 
+file into one nicely-formatted table (collate-coverage.pl).  
+
+Prerequisites: Step 3 outputs, bedtools, perl Math::NumberCruncher.
+
+Inputs: step 3 outputs.
+Outputs: *.cov coverage files (in directory data/tmp), an output file named "data_table.txt" which has results (coverage per gene) 
+
+usage: sh parse-protein-bams.sh
+
+ 
+
+
+
+
+
 3. contiguator.sh
 
 This step runs Contiguator on the assembled scaffolds for each strain, aligning them to the WGLW5-fix scaffold.
