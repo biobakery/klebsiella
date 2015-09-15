@@ -1,0 +1,7 @@
+README
+
+1.  make_bam.sh
+
+This step makes bam files from raw reads.
+
+Usage: sh make_bam.sh
