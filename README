@@ -35,7 +35,7 @@ Outputs: .bam files of reads to genes, pairwise for each strain.
 
 4. parse-protein-bams.sh
 
-This step combines bedtools and two accessory perl scripts (parse-coverage.pl and collate-coverage.pl) to calculate the per-base coverage at each position 
+This step combines bedtools and accessory perl scripts (parse-coverage.pl, collate-coverage.pl) to calculate the per-base coverage at each position 
 for each protein, and then calculate the median & standard deviation coverage for each gene (parse-coverage.pl) and process each .cov 
 file into one nicely-formatted table (collate-coverage.pl).  
 
@@ -45,6 +45,16 @@ Inputs: step 3 outputs.
 Outputs: *.cov coverage files (in directory data/tmp), an output file named "data_table.txt" which has results (coverage per gene) 
 
 usage: sh parse-protein-bams.sh
+
+5. filter.pl
+
+This script applies a 2 IQR-based filter (25th percentile - 2 IQR) to data_table.txt to filter out genes with low coverage.
+
+Prereqs: output from step 4.
+
+usage: perl filter.pl data_table.txt > FilteredOutput.txt
+
+
 
  
 
