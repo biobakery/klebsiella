@@ -1,5 +1,12 @@
 README
 
+This code was created to support the project "The Gut Microbiota and Host Antimicrobial Peptides 
+Influence Klebsiella pneumoniae Capsular Polysaccharide Population Dynamics", by Leslie Wardwell et al,
+in review, 2015.
+
+This repository is maintained by Xochitl Morgan, morganx@gmail.com.
+
+
 1.  make_bam.sh
 
 This step creates an index from WGLW5-fix.fa (reference), aligns each strain's reads into a sam file, sorts the sam,
