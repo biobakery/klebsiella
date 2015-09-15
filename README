@@ -12,13 +12,35 @@ Outputs: a *-sorted.bam and *-sorted.bai for each strain *.
 
 Note: the fastq.gz are not included and need to be downloaded from **URL**.
 
-2. bed.sh
+2. coverage-bed.sh (formerly bed.sh)
 
 This step calculates coverage gaps for each strain and creates a bed file for each strain, showing the coverage gaps.
 
-Usage: sh bed.sh
+Usage: sh coverage-bed.sh
 
 Prerequisite: bedtools
 Inputs: the *-sorted.bam files for each strain produced in step 1.
 Outputs: *-gaps.bed for each strain.
+
+3. contiguator.sh
+
+This step runs Contiguator on the assembled scaffolds for each strain, aligning them to the WGLW5-fix scaffold.
+A 5kb minimum length cutoff is imposed. 
+
+Usage: sh contiguator.sh
+
+Prerequisite: Contiguator installed & added to path (see shell script)
+Inputs: the scaffolds for each strain.
+Outputs: Contiguator PDFs and alignment descriptions.
+
+4. feature-beds.sh
+
+This script creates bed files of each strain's features and contig boundaries relative to the reference genome.
+It uses blat, prokka outputs, and contiguator outputs.
+
+Usage: sh feature-beds.sh
+
+Prerequisite: Blat. Outputs from step 3. Prokka outputs (need to be downloaded from **URL**). 
+
+
 

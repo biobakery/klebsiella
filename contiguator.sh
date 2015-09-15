@@ -1,6 +1,6 @@
 #! /usr/bin/sh
 
-# run Contiguator on data
+# run Contiguator on data to align scaffolds for each assembly to WGLW5-fix scaffold (impose 5kb minimum length cutoff).
 
 #note: chmod +x to CONTIGuator.py and add this line to ~/.bash_profile:
 # export PATH=/path/to/CONTIGuator_v2.7.4/:$PATH
